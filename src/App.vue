@@ -3,7 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader></MyHeader>
-        <MyList></MyList>
+        <MyList :todos="todos"></MyList>
         <MyFooter></MyFooter>
       </div>
     </div>
@@ -17,7 +17,16 @@ import MyFooter from "@/components/MyFooter";
 
 export default {
   name: 'App',
-  components: {MyHeader,MyList,MyFooter}
+  components: {MyHeader,MyList,MyFooter},
+  date(){
+    return{
+      todos:[
+        {id:'001',title:'吃饭',done:'true'},
+        {id:'002',title:'喝酒',done:'false'},
+        {id:'003',title:'开车',done:'true'}
+      ]
+    }
+  },
 }
 </script>
 
