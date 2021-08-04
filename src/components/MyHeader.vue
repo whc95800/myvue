@@ -8,10 +8,12 @@
 import {nanoid} from 'nanoid'
 export default {
   name: "MyHeader",
+  props:['addTodo'],
   methods:{
     add(e){
       const todoObj = {id:nanoid(),title:e.target.value,done:'false'}
-      console.log(todoObj)
+      this.addTodo(todoObj)
+      e.target.value=''
     }
   },
 }

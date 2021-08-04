@@ -2,7 +2,7 @@
   <div id="root">
     <div class="todo-container">
       <div class="todo-wrap">
-        <MyHeader></MyHeader>
+        <MyHeader :addTodo="addTodo"></MyHeader>
         <MyList :todos="todos"></MyList>
         <MyFooter></MyFooter>
       </div>
@@ -25,6 +25,11 @@ export default {
         {id:'002',title:'喝酒',done:'false'},
         {id:'003',title:'开车',done:'true'}
       ]
+    }
+  },
+  methods:{
+    addTodo(todoObj){
+      this.todo.unshift(todoObj)
     }
   },
 }
