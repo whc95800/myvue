@@ -3,8 +3,8 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader :addTodo="addTodo"></MyHeader>
-        <MyList :todos="todos"></MyList>
-        <MyFooter></MyFooter>
+        <MyList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"></MyList>
+        <MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"></MyFooter>
       </div>
     </div>
   </div>
@@ -18,20 +18,38 @@ import MyFooter from "@/components/MyFooter";
 export default {
   name: 'App',
   components: {MyHeader,MyList,MyFooter},
-  date(){
+  data(){
     return{
       todos:[
-        {id:'001',title:'吃饭',done:'true'},
-        {id:'002',title:'喝酒',done:'false'},
-        {id:'003',title:'开车',done:'true'}
+        {id:'001',title:'吃饭',done:true},
+        {id:'002',title:'喝酒',done:false},
+        {id:'003',title:'开车',done:true}
       ]
     }
   },
   methods:{
     addTodo(todoObj){
-      this.todo.unshift(todoObj)
+      this.todos.unshift(todoObj)
+    },
+    checkTodo(id){
+      this.todos.forEach((todo)=>{
+        if(todo.id === id) todo.done = !todo.done
+      })
+    },
+    deleteTodo(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id)
+    },
+    checkAllTodo(done){
+      this.todos.forEach((todo)=>{
+        todo.done=done
+      })
+    },
+    clearAllTodo(){
+      this.todos = this.todos.filter((todo)=>{
+        return !todo.done
+      })
     }
-  },
+  }
 }
 </script>
 
