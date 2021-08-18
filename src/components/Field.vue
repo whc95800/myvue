@@ -6,45 +6,7 @@
 
 <script>
 export default {
-  name: "Field",
-  addField(){
-    const ROWS=15;
-    const COLUMNS=15;
-    const table = document.getElementById("field-table");
-    for (let y = 0; y <ROWS; y++) {
-      const row = document.createElement("tr");
-      for (let x = 0; x < COLUMNS; x++) {
-        const box = document.createElement("td");
-        const chips = document.createElement("div");
-        const lastRow = document.createElement("div");
-        const lastColumn = document.createElement("div");
-        const lastRowColumn = document.createElement("div");
-        box.appendChild(chips);
-        row.appendChild(box);
-        if (x === 14){
-          lastRow.className="chip last-in-row";
-          box.appendChild(lastRow);
-        }
-        if (x === 14&&y === 14){
-          lastRowColumn.className="chip last-in-column last-in-row";
-          box.appendChild(lastRowColumn);
-        }
-        if (y === 14){
-          lastColumn.className="chip last-in-column";
-          box.appendChild(lastColumn);
-        }
-
-        chips.className = "chip";
-
-        chips.innerHTML="0";
-        lastRow.innerHTML="0";
-        lastColumn.innerHTML="0";
-        lastRowColumn.innerHTML="0";
-      }
-      table.appendChild(row);
-    }
-  }
-
+  name: "Field"
 }
 </script>
 
