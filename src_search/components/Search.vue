@@ -12,20 +12,21 @@
 import axios from "axios";
 export default {
   name: "Search",
-  data() {
-    return {
-      keyWord: ''
+  data(){
+    return{
+      keyWord:''
     }
   },
   methods:{
-    searchUsers(){
+    searchUsers: function () {
+      this.$bus.$emit('updataListData', {isFirst:false,isLoading:true,errMsg:'',users:[]})
       axios.get(`https://api.github.com/search/users?q=${this.keyWord}`).then(
-        response =>{
-          console.log('请求成功了')
-          this.$bus.$emit('getUsers',response.data.items)
+        response => {
+          // console.log('请求成功了',response.data.items)
+          this.$bus.$emit('updataListData',{isLoading:false,errMsg:'',users:response.data.items})
         },
-        error =>{
-          console.log('请求失败了',error.message)
+        error => {
+          this.$bus.$emit('updataListData', {isLoading:false,errMsg:error.message,users:[]})
         }
       )
     }
@@ -33,3 +34,6 @@ export default {
 }
 </script>
 
+<style scoped>
+
+</style>
