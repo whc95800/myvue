@@ -1,12 +1,9 @@
 <template>
   <div class="field">
     <table id="field-table">
-      <tr v-for="(item,j) in arr" :key="j">
-        <td v-for="(item,i) in item" :key="i">
+      <tr v-for="(item,j) in arr" :key="j" v-show="j!==15">
+        <td v-for="(item,i) in item" :key="i" v-show="i!==15">
           <div class="chip"></div>
-          <div v-if="i===14" class="chip last-in-row"></div>
-          <div v-if="j===14" class="chip last-in-column"></div>
-          <div v-if="i&&j===14" class="chip last-in-row last-in-column"></div>
         </td>
       </tr>
     </table>
@@ -26,9 +23,9 @@ export default {
   },
 methods:{
     addData(){
-      for (let i = 0; i < 15; i++) {
+      for (let i = 0; i < 16; i++) {
         this.arr.push([])
-        for (let j = 0; j < 15; j++) {
+        for (let j = 0; j < 16; j++) {
           this.arr[i].push("0")
         }
       }
@@ -72,15 +69,6 @@ methods:{
 
 .chip:hover {
   background-color: rgb(255, 255, 255,0.5);
-}
-.chip.last-in-row {
-  right: -18px;
-  left: inherit;
-}
-
-.chip.last-in-column {
-  bottom: -18px;
-  top: inherit;
 }
 
 .chip.black {
