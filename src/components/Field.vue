@@ -1,12 +1,12 @@
 <template>
   <div class="field">
     <table id="field-table">
-      <tr v-for="indexy in column" :key="indexy">
-        <td v-for="indexx in rows" :key="indexx">
+      <tr v-for="(item,j) in arr" :key="j">
+        <td v-for="(item,i) in item" :key="i">
           <div class="chip"></div>
-          <div v-if="indexx===15" class="chip last-in-row"></div>
-          <div v-if="indexy===15" class="chip last-in-column"></div>
-          <div v-if="indexx&indexy===15" class="chip last-in-row last-in-column"></div>
+          <div v-if="i===14" class="chip last-in-row"></div>
+          <div v-if="j===14" class="chip last-in-column"></div>
+          <div v-if="i&&j===14" class="chip last-in-row last-in-column"></div>
         </td>
       </tr>
     </table>
@@ -17,13 +17,24 @@
 export default {
   name: "Field",
   data(){
-    return{
-      rows: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
-      column:[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+    return {
+      arr:[]
+      }
+  },
+  created() {
+    this.addData();
+  },
+methods:{
+    addData(){
+      this.arr = new Array(15);
+      for (let i = 0; i < 15; i++) {
+        this.arr[i] = new Array(15);
+        for (let j = 0; j < 15; j++) {
+          this.arr[i][j] = 0;}
+      }
     }
   }
 }
-
 </script>
 
 <style scoped>
