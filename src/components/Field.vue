@@ -27,9 +27,9 @@ export default {
 methods:{
     addData(){
       for (let i = 0; i < 15; i++) {
-        this.arr[i] = []
+        this.arr.push([])
         for (let j = 0; j < 15; j++) {
-          this.arr[i][j] = 0;
+          this.arr[i].push("0")
         }
       }
     }
