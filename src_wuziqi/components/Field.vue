@@ -1,8 +1,8 @@
 <template>
   <div class="field">
     <table id="field-table">
-      <tr v-for="(item,j) in arr" :key="j" v-show="j!==15">
-        <td v-for="(item,i) in item" :key="i" v-show="i!==15">
+      <tr v-for="(item,j) in arr" :key="j">
+        <td v-for="(item,i) in item" :key="i">
           <div class="chip"></div>
         </td>
       </tr>
@@ -23,9 +23,9 @@ export default {
   },
 methods:{
     addData(){
-      for (let i = 0; i < 16; i++) {
+      for (let i = 0; i < 15; i++) {
         this.arr.push([])
-        for (let j = 0; j < 16; j++) {
+        for (let j = 0; j < 15; j++) {
           this.arr[i].push("0")
         }
       }
